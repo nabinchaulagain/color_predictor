@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="header">
+      <h1>What color text looks best on the shown background?</h1>
+      <button id="trainBtn" disabled>Train</button>
+      <button id="predictBtn">Predict</button>
+    </div>
+    <div id="root">
+      <div id="color1" class="color-box">Black</div>
+      <div id="color2" class="color-box">White</div>
+    </div>
+
+    <div id="predictionContainer">
+      <div id="winnerContainer">Winner</div>
+      <div>Confidence: <span id="predConfidence">'n/a'</span></div>
+    </div>
+    <div id="trainBtns">
+      <div>
+        <h2 id="dataSizeDisplayer"></h2>
+      </div>
+      <div style="margin-bottom: 8px">
+        <button id="startTrainBtn">Train on dataset</button>
+      </div>
+      <button id="save">Save dataset</button>
+      <label for="file" class="btn">Upload dataset</label>
+      <input type="file" id="file" name="file" />
+    </div>
+    <script src="matrix.js"></script>
+    <script src="neural_network.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
