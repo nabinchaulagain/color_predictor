@@ -6,6 +6,8 @@ const loadPredictMode = function () {
   saveBtn.removeEventListener("click", downloadDataset);
   startTrainBtn.removeEventListener("click", trainNetwork);
   fileBtn.removeEventListener("change", uploadDataset);
+  saveNetBtn.addEventListener("click", saveNetwork);
+  loadNetBtn.addEventListener("change", loadNetwork);
   startPredictions();
 };
 
@@ -24,4 +26,17 @@ const startPredictions = function () {
 
 const stopPredictions = function () {
   clearInterval(predPlayerInterval);
+};
+
+const saveNetwork = function () {
+  downloadFile("nn.json", JSON.stringify(neuralNetwork));
+};
+
+const loadNetwork = function (event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.readAsText(file);
+  reader.onload = function () {
+    neuralNetwork = NeuralNetwork.deserialize(this.result);
+  };
 };

@@ -11,11 +11,13 @@ const predictionContainer = document.querySelector("#predictionContainer");
 const winnerContainer = document.querySelector("#winnerContainer");
 const predConfidence = document.querySelector("#predConfidence");
 const predClass = document.querySelector("#predClass");
+const saveNetBtn = document.querySelector("#saveNetBtn");
+const loadNetBtn = document.querySelector("#loadNetBtn");
 
 const ANIM_TIME = 2000;
 let predPlayerInterval;
 
-const neuralNetwork = new NeuralNetwork([3, 2, 2]);
+let neuralNetwork = new NeuralNetwork([3, 1, 2]);
 
 let randColor = new Color();
 
@@ -63,6 +65,14 @@ const showNewColors = function () {
   randColor = new Color();
   color1.style.background = randColor.rgb;
   color2.style.background = randColor.rgb;
+};
+
+const downloadFile = function (filename, content) {
+  const a = document.createElement("a");
+  const blob = new Blob([content], { type: "plain/text" });
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
 };
 
 loadTrainMode();

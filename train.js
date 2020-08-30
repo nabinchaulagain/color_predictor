@@ -22,6 +22,8 @@ const loadTrainMode = function () {
   saveBtn.addEventListener("click", downloadDataset);
   startTrainBtn.addEventListener("click", trainNetwork);
   fileBtn.addEventListener("change", uploadDataset);
+  saveNetBtn.removeEventListener("click", saveNetwork);
+  loadNetBtn.removeEventListener("change", loadNetwork);
   showDatasetSize();
   stopPredictions();
 };
@@ -59,9 +61,5 @@ const uploadDataset = function (event) {
 };
 
 const downloadDataset = function () {
-  const a = document.createElement("a");
-  const blob = new Blob([JSON.stringify(dataset)], { type: "plain/text" });
-  a.href = URL.createObjectURL(blob);
-  a.download = "colors.json";
-  a.click();
+  downloadFile("colors.json", JSON.stringify(dataset));
 };

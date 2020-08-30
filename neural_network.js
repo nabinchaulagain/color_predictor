@@ -83,3 +83,21 @@ NeuralNetwork.prototype.predict = function (input) {
   }
   return { class: chosenClass, confidence: maxConf };
 };
+
+NeuralNetwork.prototype.serialize = function () {
+  return JSON.stringify(this);
+};
+
+NeuralNetwork.deserialize = function (json) {
+  const nnSaved = JSON.parse(json);
+  const nn = new NeuralNetwork([
+    nnSaved.i_units,
+    nnSaved.h_units,
+    nnSaved.o_units,
+  ]);
+  nn.w1 = new Matrix(nnSaved.w1.data);
+  nn.w2 = new Matrix(nnSaved.w2.data);
+  nn.b1 = new Matrix(nnSaved.b1.data);
+  nn.b2 = new Matrix(nnSaved.b2.data);
+  return nn;
+};
