@@ -17,7 +17,7 @@ const loadNetBtn = document.querySelector("#loadNetBtn");
 const ANIM_TIME = 2000;
 let predPlayerInterval;
 
-let neuralNetwork = new NeuralNetwork([3, 1, 2]);
+let neuralNetwork = new NeuralNetwork([3, 3, 2]);
 
 let randColor = new Color();
 

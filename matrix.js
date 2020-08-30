@@ -100,3 +100,8 @@ Matrix.randomInit = function (xdim, ydim, low, high) {
   );
   return matrix;
 };
+
+Matrix.prototype.copy = function () {
+  const copyData = this.data.map((row) => [...row]);
+  return new Matrix(copyData);
+};

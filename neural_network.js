@@ -57,8 +57,8 @@ NeuralNetwork.prototype.train = function (inputs, labels, alpha, epochs = 50) {
         .multiply(this.z1.map(sigmoid_prime));
       const dw2 = delta2.dot(this.a1.transpose());
       const dw1 = delta1.dot(this.a0.transpose());
-      const db2 = delta2;
-      const db1 = delta1;
+      const db2 = delta2.copy();
+      const db1 = delta1.copy();
       this.w2 = this.w2.subtract(dw2.multiply(alpha));
       this.w1 = this.w1.subtract(dw1.multiply(alpha));
       this.b2 = this.b2.subtract(db2.multiply(alpha));
